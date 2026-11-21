@@ -289,11 +289,6 @@ The protected PDF file was selected and uploaded to the NetworkWalks Hash Calcul
 
 The tool processed the uploaded document to obtain its corresponding password-verification data.
 
-![Step 3 - PDF Upload](screenshots/module2-step3.png)
-
-*Figure 3: Uploading My Locked PDF1.pdf to the NetworkWalks Hash Calculator.*
-
----
 
 ### Step 4: Extracting and Copying the PDF Hash
 
@@ -303,11 +298,12 @@ The extracted hash was copied for use in the next stage of the password recovery
 
 This step prepared the password-verification data needed by the cracking tool.
 
-![Step 4 - Extracted Hash](screenshots/module2-step4.png)
+![Step 3 - PDF Upload](screenshots/module2-step3.png)
 
-*Figure 4: PDF password hash extracted using the NetworkWalks Hash Calculator.*
+*Figure 3: Uploading My Locked PDF1.pdf to the NetworkWalks Hash Calculator.*
 
 ---
+
 
 ### Step 5: Accessing the NetworkWalks Password Cracker
 
@@ -316,7 +312,11 @@ The NetworkWalks Password Cracker was opened in the web browser.
 This tool was used to test password candidates against the previously extracted PDF hash.
 
 The extracted hash was entered into the appropriate input field.
+![Step 4 - Extracted Hash](screenshots/module2-step4.png)
 
+*Figure 4: PDF password hash extracted using the NetworkWalks Hash Calculator.*
+
+---
 
 ---
 
@@ -330,7 +330,6 @@ After the process was completed, the recovered password was displayed.
 ![Step 5 - Password Cracker](screenshots/module2-step5.png)
 
 *Figure 5: NetworkWalks Password Cracker with the extracted PDF hash entered.*
-
 
 
 
