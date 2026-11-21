@@ -233,3 +233,186 @@ Overall, this practical exercise enhanced my understanding of password recovery 
 
 **NetworkWalks Cybersecurity & Ethical Hacking Internship**  
 **Week 3 – Project Module 1: Password Cracking with JTR**
+
+# Week 3 – Project Module 2: Password Cracking with NetworkWalks Tools
+
+**Internship:** NetworkWalks – Cybersecurity & Ethical Hacking  
+**Module:** Week 3 | Project Module 2  
+**Lab Title:** Password Cracking with NetworkWalks Tools  
+**Operating System:** Windows  
+**Tools Used:** NetworkWalks Hash Calculator, NetworkWalks Password Cracker, Web Browser
+
+---
+
+## 1. Introduction
+
+This lab focused on password recovery using two online tools provided by NetworkWalks: the Hash Calculator and the Password Cracker.
+
+Password cracking is the process of recovering a password from stored password-verification data or a protected file. It is commonly used in authorized cybersecurity assessments to evaluate password security and demonstrate the risks associated with weak passwords.
+
+The assigned task was to recover the password of the provided password-protected PDF file, **My Locked PDF1.pdf**, using the NetworkWalks online tools.
+
+The lab was completed on a Windows computer using a web browser.
+
+## 2. Objectives
+
+The objectives of this lab were to:
+
+- Understand the basic process of password recovery.
+- Use the NetworkWalks Hash Calculator to extract the hash from a protected PDF.
+- Identify and copy the extracted hash value.
+- Use the NetworkWalks Password Cracker to recover the password.
+- Verify the recovered password by opening the protected PDF.
+- Understand the importance of strong passwords in protecting sensitive documents.
+
+---
+
+## 3. Practical Implementation
+
+### Step 1: Preparing the Password-Protected PDF
+
+The provided PDF file, **My Locked PDF1.pdf**, was downloaded and saved on the Windows computer.
+
+The document was password-protected and required a valid password to open.
+
+The file was used as the target for the password recovery exercise.
+
+![Step 1 - Protected PDF](screenshots/module2-step1.png)
+
+*Figure 1: Password-protected PDF file prepared for the NetworkWalks password recovery lab.*
+
+---
+
+### Step 2: Accessing the NetworkWalks Hash Calculator
+
+The NetworkWalks Hash Calculator was accessed through a web browser.
+
+This online tool was used to extract the password-verification hash from the protected PDF document.
+
+The tool operates directly through a browser without requiring additional software installation.
+
+![Step 2 - Hash Calculator](screenshots/module2-step2.png)
+
+*Figure 2: Accessing the NetworkWalks Hash Calculator through a web browser.*
+
+---
+
+### Step 3: Uploading the Protected PDF
+
+The protected PDF file was selected and uploaded to the NetworkWalks Hash Calculator.
+
+The tool processed the uploaded document to obtain its corresponding password-verification data.
+
+![Step 3 - PDF Upload](screenshots/module2-step3.png)
+
+*Figure 3: Uploading My Locked PDF1.pdf to the NetworkWalks Hash Calculator.*
+
+---
+
+### Step 4: Extracting and Copying the PDF Hash
+
+After processing the PDF, the Hash Calculator generated the corresponding hash value.
+
+The extracted hash was copied for use in the next stage of the password recovery process.
+
+This step prepared the password-verification data needed by the cracking tool.
+
+![Step 4 - Extracted Hash](screenshots/module2-step4.png)
+
+*Figure 4: PDF password hash extracted using the NetworkWalks Hash Calculator.*
+
+---
+
+### Step 5: Accessing the NetworkWalks Password Cracker
+
+The NetworkWalks Password Cracker was opened in the web browser.
+
+This tool was used to test password candidates against the previously extracted PDF hash.
+
+The extracted hash was entered into the appropriate input field.
+
+![Step 5 - Password Cracker](screenshots/module2-step5.png)
+
+*Figure 5: NetworkWalks Password Cracker with the extracted PDF hash entered.*
+
+---
+
+### Step 6: Recovering the PDF Password
+
+The password-cracking process was initiated using the NetworkWalks Password Cracker.
+
+The tool processed the supplied hash and performed password recovery.
+
+After the process was completed, the recovered password was displayed.
+
+![Step 6 - Recovered Password](screenshots/module2-step6.png)
+
+*Figure 6: Password successfully recovered using the NetworkWalks Password Cracker.*
+
+---
+
+### Step 7: Verifying the Recovered Password
+
+The original protected PDF, **My Locked PDF1.pdf**, was opened using a PDF reader.
+
+When the password prompt appeared, the recovered password was entered.
+
+The PDF opened successfully, confirming that the recovered password was correct.
+
+![Step 7 - Unlocked PDF](screenshots/module2-step7.png)
+
+*Figure 7: Successfully opening the protected PDF using the recovered password.*
+
+---
+
+## 4. Results and Observations
+
+| Activity | Result |
+|---|---|
+| Preparing the protected PDF | Completed |
+| Accessing the NetworkWalks Hash Calculator | Successful |
+| Uploading the protected PDF | Successful |
+| Extracting the PDF password hash | Successful |
+| Accessing the NetworkWalks Password Cracker | Successful |
+| Recovering the PDF password | Successful |
+| Opening the protected PDF | Successful |
+
+The lab demonstrated the complete password recovery process using browser-based cybersecurity tools.
+
+The recovered password was successfully verified by opening the protected PDF document.
+
+---
+
+## 5. Security Observations
+
+The following observations were made during the lab:
+
+1. **Password strength:** Weak and predictable passwords may be recovered more easily through password-cracking techniques.
+
+2. **Hash extraction:** Password-protected documents can contain password-verification data that may be extracted for authorized security testing.
+
+3. **Password recovery:** Password-cracking tools can evaluate candidate passwords against extracted verification data to find matching credentials.
+
+4. **Online cybersecurity tools:** Browser-based applications can simplify certain cybersecurity tasks without requiring local software installation.
+
+5. **Security awareness:** Strong, unique, and unpredictable passwords are important for protecting confidential documents.
+
+---
+
+## 6. Conclusion
+
+In this lab, I successfully completed the password recovery exercise using the NetworkWalks Hash Calculator and Password Cracker.
+
+The provided password-protected PDF was uploaded to the Hash Calculator, and its password-verification hash was extracted.
+
+The extracted hash was then processed using the NetworkWalks Password Cracker, which successfully recovered the password.
+
+Finally, the recovered password was used to open the protected PDF document, confirming that the password recovery process was successful.
+
+Overall, the lab provided practical experience in PDF hash extraction, browser-based password recovery, password security assessment, and the importance of strong passwords.
+
+---
+
+**NetworkWalks Cybersecurity & Ethical Hacking Internship**  
+**Week 3 – Project Module 2**
+
