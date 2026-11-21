@@ -151,9 +151,7 @@ After completing the attack, Johnny displayed the recovered password associated 
 The recovered password was identified through the application's password results.
 
 This demonstrated that John the Ripper successfully performed password recovery against the provided protected PDF document.
-
-![Recovered Password](screenshots/09-recovered-password.png)
-
+![Password Cracking Process](screenshots/08-password-cracking-recoveredpassword.png)
 *Figure 9: Successfully recovered PDF password displayed in Johnny GUI.*
 
 ### Step 10: Unlocking the Protected PDF
