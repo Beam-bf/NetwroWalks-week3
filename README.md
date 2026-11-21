@@ -263,11 +263,6 @@ The document was password-protected and required a valid password to open.
 
 The file was used as the target for the password recovery exercise.
 
-![Step 1 - Protected PDF](screenshots/module2-step1.png)
-
-*Figure 1: Password-protected PDF file prepared for the NetworkWalks password recovery lab.*
-
----
 
 ### Step 2: Accessing the NetworkWalks Hash Calculator
 
@@ -276,6 +271,11 @@ The NetworkWalks Hash Calculator was accessed through a web browser.
 This online tool was used to extract the password-verification hash from the protected PDF document.
 
 The tool operates directly through a browser without requiring additional software installation.
+![Step 1 - Protected PDF](screenshots/module2-step1.png)
+
+*Figure 1: Password-protected PDF file prepared for the NetworkWalks password recovery lab.*
+
+---
 
 ![Step 2 - Hash Calculator](screenshots/module2-step2.png)
 
@@ -317,9 +317,6 @@ This tool was used to test password candidates against the previously extracted 
 
 The extracted hash was entered into the appropriate input field.
 
-![Step 5 - Password Cracker](screenshots/module2-step5.png)
-
-*Figure 5: NetworkWalks Password Cracker with the extracted PDF hash entered.*
 
 ---
 
@@ -330,12 +327,12 @@ The password-cracking process was initiated using the NetworkWalks Password Crac
 The tool processed the supplied hash and performed password recovery.
 
 After the process was completed, the recovered password was displayed.
+![Step 5 - Password Cracker](screenshots/module2-step5.png)
 
-![Step 6 - Recovered Password](screenshots/module2-step6.png)
+*Figure 5: NetworkWalks Password Cracker with the extracted PDF hash entered.*
 
-*Figure 6: Password successfully recovered using the NetworkWalks Password Cracker.*
 
----
+
 
 ### Step 7: Verifying the Recovered Password
 
@@ -344,10 +341,9 @@ The original protected PDF, **My Locked PDF1.pdf**, was opened using a PDF reade
 When the password prompt appeared, the recovered password was entered.
 
 The PDF opened successfully, confirming that the recovered password was correct.
+![Step 6 - Recovered Password](screenshots/module2-step6.png)
 
-![Step 7 - Unlocked PDF](screenshots/module2-step7.png)
-
-*Figure 7: Successfully opening the protected PDF using the recovered password.*
+*Figure 6: Successfully opening the protected PDF using the recovered password.*
 
 ---
 
