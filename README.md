@@ -1,392 +1,235 @@
-# NetwroWalks-week3
 
-# Week 3 – Project Module 1: Password Cracking with John the Ripper
+# Week 3 – Project Module 1: Password Cracking with JTR
 
 **Internship:** NetworkWalks – Cybersecurity & Ethical Hacking  
-**Module:** Week 3 | Project Module 1  
-**Lab:** Password Cracking with John the Ripper (JTR)  
+**Module:** Week 3 – Project Module 1  
+**Topic:** Password Cracking with John the Ripper  
 **Operating System:** Windows  
-**Tools:** John the Ripper 1.9.0 Jumbo, Johnny GUI, PowerShell, PDF Hash Extractor
+**Tools Used:** John the Ripper (JTR), Johnny GUI, OnlineHashCrack PDF Hash Extractor, Notepad
 
 ---
 
 ## 1. Introduction
 
-This lab focuses on password recovery using John the Ripper (JTR) and Johnny, its graphical user interface. The purpose of the exercise was to understand how password-cracking tools analyze password hashes and perform dictionary-based attacks.
+This lab focused on password cracking using John the Ripper (JTR) and its graphical user interface, Johnny. John the Ripper is a password auditing tool used to assess password security by testing possible passwords against stored password hashes.
 
-The assigned task involved recovering the password of a protected PDF file using JTR John and JTR Johnny on a Windows computer.
+The purpose of this exercise was to recover the password of a protected PDF document using John the Ripper and Johnny on a Windows computer.
 
-During this exercise, I installed and configured both tools, extracted password hashes from protected PDF files, performed wordlist-based password recovery attempts, and investigated several configuration issues.
+The lab involved installing and configuring the required tools, extracting the hash from a password-protected PDF file, performing a password recovery attack, and using the recovered password to access the original document.
 
-All testing was conducted in an authorized educational environment.
-
----
-
-## 2. Objectives
+## 2. Objective
 
 The objectives of this lab were to:
 
-- Install and configure John the Ripper on Windows.
-- Install Johnny GUI and connect it to John the Ripper.
-- Extract password-verification data from a protected PDF document.
-- Save the extracted PDF hash in a text file.
-- Perform a dictionary attack using John the Ripper and Johnny.
-- Analyze password recovery results.
-- Troubleshoot incorrect hash formats, file paths, and wordlist configurations.
+- Install John the Ripper on Windows.
+- Install and configure Johnny GUI.
+- Extract the password hash from the provided PDF document.
+- Save the extracted hash in a text file.
+- Load the extracted hash into Johnny.
+- Perform a password recovery attack using JTR.
+- Identify the recovered password.
+- Use the recovered password to unlock the protected PDF document.
 
 ---
 
-## 3. Tools and Environment
+## 3. Practical Implementation
 
-| Tool | Purpose |
-|---|---|
-| John the Ripper 1.9.0 Jumbo | Password hash auditing and recovery |
-| Johnny GUI | Graphical interface for John the Ripper |
-| Windows PowerShell | Executing commands and verifying results |
-| PDF Hash Extractor | Extracting password-verification data from PDFs |
-| Notepad | Saving extracted hashes and password wordlists |
-| Protected PDF files | Targets for the authorized lab exercise |
+### Step 1: Downloading John the Ripper
 
----
+The Windows version of John the Ripper was downloaded from the official Openwall website.
 
-## 4. Practical Implementation
+**Official Website:** https://www.openwall.com/john/
 
-### Step 1: Installation of John the Ripper
+After downloading, the compressed folder was extracted, and the application files were prepared for use.
 
-I downloaded the Windows 64-bit version of John the Ripper Jumbo and extracted the installation files.
+The `john.exe` executable was located inside the `run` directory.
 
-The executable was located inside the `run` folder. I navigated to the correct directory using PowerShell and verified that John the Ripper was functioning.
+![John the Ripper Download](screenshots/01-jtr-download.png)
 
-**Command used:**
+*Figure 1: Downloading and preparing John the Ripper on Windows.*
 
-```powershell
-.\john.exe --test=5
-```
+### Step 2: Installing Johnny GUI
 
-![John the Ripper Installation](screenshots/01-jtr-installation.png)
+Johnny GUI was downloaded from the official Openwall website.
 
-*Figure 1: John the Ripper installation files and verification using Windows PowerShell.*
+**Official Website:** https://openwall.info/wiki/john/johnny
 
-**Observation:** John the Ripper executed successfully after locating the correct executable directory.
+The installation file was executed, and Johnny was successfully installed on the Windows computer.
 
----
+Johnny provides a graphical interface that simplifies the use of John the Ripper by allowing users to manage password files, configure attacks, and view recovered passwords.
 
-### Step 2: Installation and Configuration of Johnny GUI
+![Johnny Installation](screenshots/02-johnny-installation.png)
 
-I installed Johnny GUI to perform password-cracking operations through a graphical interface.
+*Figure 2: Installation of Johnny GUI on Windows.*
 
-After launching Johnny, I opened the Settings section and selected the `john.exe` executable from the extracted John the Ripper folder.
+### Step 3: Configuring John the Ripper in Johnny
 
-Johnny successfully detected the installed version:
+After installation, Johnny was launched.
 
-```text
-John the Ripper 1.9.0-jumbo-1 OMP
-```
+The **Settings** section was opened, and the **Browse** option was used to locate the `john.exe` executable inside the extracted John the Ripper folder.
 
-![Johnny GUI Configuration](screenshots/02-johnny-configuration.png)
+The executable was selected to establish a connection between Johnny GUI and John the Ripper.
 
-*Figure 2: Johnny GUI configured with the John the Ripper executable.*
+Johnny successfully detected the installed John the Ripper application, confirming that the configuration was completed.
 
-**Observation:** Johnny successfully recognized the JTR executable, confirming that both applications were connected.
+![Johnny Configuration](screenshots/03-johnny-configuration.png)
 
----
+*Figure 3: Configuring the John the Ripper executable in Johnny GUI.*
 
-### Step 3: Preparation of the Password-Protected PDF
+### Step 4: Preparing the Password-Protected PDF
 
-The password-protected PDF document was prepared for the password recovery exercise.
+The provided password-protected PDF document, **My Locked PDF1.pdf**, was downloaded and saved on the Windows computer.
 
-I also created a separate password-protected PDF with a different password to conduct additional testing.
+The document was used as the target file for the password recovery exercise.
 
-![Password Protected PDF](screenshots/03-protected-pdf.png)
+![Protected PDF](screenshots/04-protected-pdf.png)
 
-*Figure 3: Password-protected PDF document used for the recovery exercise.*
+*Figure 4: Password-protected PDF document prepared for the lab.*
 
-**Observation:** The documents required password verification before allowing access.
+### Step 5: Extracting the PDF Password Hash
 
----
+The OnlineHashCrack PDF Hash Extractor was accessed through the following website:
 
-### Step 4: Extraction of the PDF Hash
+https://www.onlinehashcrack.com/tools-pdf-hash-extractor.php
 
-I used the PDF Hash Extractor to obtain the password-verification data from the protected PDF.
+The protected PDF document was selected using the Browse option and uploaded to the extractor.
 
-The PDF was uploaded to the extractor, and the generated hash was copied for further analysis.
+After processing the document, the tool generated the corresponding PDF password hash.
 
-The extracted data began with the PDF hash identifier:
+The extracted hash began with the PDF hash identifier:
 
 ```text
 $pdf$
 ```
 
-![PDF Hash Extraction](screenshots/04-pdf-hash-extraction.png)
+This hash was required for the password recovery process using John the Ripper.
 
-*Figure 4: Extraction of password-verification data from the protected PDF document.*
+![PDF Hash Extraction](screenshots/05-pdf-hash-extraction.png)
 
-**Observation:** The extracted data was presented in a PDF-specific hash format suitable for testing with John the Ripper.
+*Figure 5: Extracting the password hash from the protected PDF using OnlineHashCrack.*
+
+### Step 6: Saving the Extracted Hash
+
+The extracted PDF hash was copied from the online extractor.
+
+Notepad was opened, and the hash value was pasted into a new text document.
+
+The extracted content was checked to ensure that unnecessary characters were excluded and that the hash started with `$pdf$`.
+
+The document was then saved as:
+
+```text
+hash1.txt
+```
+
+This file was used as the input password hash file for Johnny.
+
+![Saved Hash File](screenshots/06-saved-hash.png)
+
+*Figure 6: Extracted PDF hash saved as hash1.txt using Notepad.*
+
+### Step 7: Loading the Hash File into Johnny
+
+Johnny GUI was opened, and the **Open password file** option was selected.
+
+The previously created `hash1.txt` file was located and opened.
+
+Johnny successfully loaded the extracted password hash for further analysis.
+
+The hash format was configured appropriately for PDF password recovery.
+
+![Loading Hash in Johnny](screenshots/07-loading-hash.png)
+
+*Figure 7: Loading the extracted PDF hash file into Johnny GUI.*
+
+### Step 8: Starting the Password Recovery Attack
+
+After loading the PDF hash, the **Start new attack** option was selected in Johnny.
+
+Johnny initiated the password recovery process through John the Ripper.
+
+During the attack, the software tested password candidates against the extracted PDF password-verification data.
+
+The attack progress was monitored through Johnny until the password recovery process was completed.
+
+![Password Cracking Process](screenshots/08-password-cracking.png)
+
+*Figure 8: Password recovery attack initiated using Johnny GUI and John the Ripper.*
+
+### Step 9: Recovering the PDF Password
+
+After completing the attack, Johnny displayed the recovered password associated with the extracted PDF hash.
+
+The recovered password was identified through the application's password results.
+
+This demonstrated that John the Ripper successfully performed password recovery against the provided protected PDF document.
+
+![Recovered Password](screenshots/09-recovered-password.png)
+
+*Figure 9: Successfully recovered PDF password displayed in Johnny GUI.*
+
+### Step 10: Unlocking the Protected PDF
+
+The original password-protected PDF document was opened using a PDF reader.
+
+When prompted for a password, the password recovered through Johnny was entered.
+
+The password was accepted, and the document opened successfully.
+
+This confirmed that the recovered password was correct and that the password recovery exercise had been completed.
+
+![PDF Unlocked](screenshots/10-pdf-unlocked.png)
+
+*Figure 10: Successfully accessing My Locked PDF1.pdf using the recovered password.*
 
 ---
 
-### Step 5: Saving the Extracted Hash
+## 4. Results and Observations
 
-The extracted PDF hash was copied into Notepad and saved as a text file.
+The following results were obtained during the lab:
 
-Separate hash files, including `Hash1` and `Hash2`, were prepared for the PDF password recovery exercises.
-
-I ensured that the extracted hash was saved without unrelated text or additional characters.
-
-![Saved PDF Hash](screenshots/05-saved-hash.png)
-
-*Figure 5: Extracted PDF hash saved in a text file for use with John the Ripper.*
-
-**Observation:** Saving the hash in a text file allowed the password-verification data to be loaded into Johnny and John the Ripper.
-
----
-
-### Step 6: Loading the Hash into Johnny
-
-I opened Johnny and selected **Open password file**.
-
-The saved PDF hash text file was loaded into the application.
-
-Next, I opened **Options** and selected the PDF hash format.
-
-**Configuration:**
-
-- Input file: Extracted PDF hash text file
-- Hash format: `PDF`
-- Attack mode: `Wordlist`
-
-![PDF Hash Format Configuration](screenshots/06-johnny-pdf-format.png)
-
-*Figure 6: Johnny GUI configured to process the extracted PDF password hash.*
-
-**Observation:** Selecting the appropriate hash format was necessary for John the Ripper to interpret the extracted PDF data correctly.
-
----
-
-### Step 7: Verifying the PDF Hash Using PowerShell
-
-Before continuing with the graphical interface, I used PowerShell to verify that John the Ripper could recognize the PDF hash.
-
-**Command used:**
-
-```powershell
-.\john.exe --format=PDF --wordlist="C:\Users\bamib\Downloads\practice-words.txt" "C:\Users\bamib\Downloads\Hash\Hash2.txt"
-```
-
-The console displayed:
-
-```text
-Loaded 1 password hash (PDF [MD5 SHA2 RC4/AES 32/64])
-Cost 1 (revision) is 3 for all loaded hashes
-Will run 16 OpenMP threads
-```
-
-![PDF Hash Verification](screenshots/07-pdf-hash-verification.png)
-
-*Figure 7: John the Ripper successfully recognizing the extracted PDF hash.*
-
-**Observation:** The hash was successfully loaded, confirming that the extracted PDF hash was recognized by JTR.
-
----
-
-### Step 8: Performing the Wordlist Attack
-
-I configured a dictionary attack in Johnny by selecting the **Wordlist** attack mode.
-
-A text file containing candidate passwords was provided as the wordlist.
-
-The attack was started to test the candidate passwords against the extracted PDF hash.
-
-The console output included:
-
-```text
-Warning: Only 6 candidates left, minimum 16 needed for performance.
-
-0g 0:00:00:00 DONE
-
-Session completed
-```
-
-![PDF Wordlist Attack](screenshots/08-pdf-wordlist-attack.png)
-
-*Figure 8: Wordlist attack performed against the extracted PDF hash using Johnny.*
-
-**Observation:** The attack completed after processing the selected password candidates. However, no matching password was recovered during the recorded Hash2 attempt.
-
----
-
-### Step 9: Additional SHA-256 Password Recovery Test
-
-To verify that John the Ripper and Johnny were functioning correctly, I conducted an additional password recovery test using a self-generated SHA-256 hash.
-
-The practice password was:
-
-```text
-hello
-```
-
-Its SHA-256 hash was:
-
-```text
-2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
-```
-
-A wordlist containing the practice password was created and used with John the Ripper.
-
-**Command used:**
-
-```powershell
-.\john.exe --format=Raw-SHA256 --wordlist="$env:USERPROFILE\Downloads\practice-words.txt" "$env:USERPROFILE\Downloads\practice-hash.txt"
-```
-
-The output showed:
-
-```text
-Loaded 1 password hash (Raw-SHA256 [SHA256 256/256 AVX2 8x])
-
-hello            (?)
-
-1g 0:00:00:00 DONE
-
-Session completed
-```
-
-![SHA256 Password Recovery](screenshots/09-sha256-cli-success.png)
-
-*Figure 9: Successful recovery of the practice SHA-256 password using John the Ripper.*
-
-**Observation:** The password `hello` was successfully recovered, demonstrating that John the Ripper could perform a dictionary attack when the correct password was present in the wordlist.
-
----
-
-### Step 10: Successful Password Recovery Using Johnny
-
-The SHA-256 practice hash was also tested through Johnny GUI.
-
-Initially, Johnny used the incorrect GOST hash format. After changing the format to `Raw-SHA256` and starting a new attack, the password was recovered.
-
-Johnny displayed:
-
-```text
-100% (1/1: 1 cracked, 0 left) [format=Raw-SHA256]
-```
-
-![Johnny Successful Recovery](screenshots/10-johnny-success.png)
-
-*Figure 10: Johnny GUI successfully recovering one SHA-256 practice password hash.*
-
-**Observation:** The successful result verified that the graphical interface was correctly configured and capable of performing password recovery.
-
----
-
-## 5. Challenges Encountered and Troubleshooting
-
-### 5.1 Executable Not Found
-
-**Problem:** PowerShell initially displayed an error indicating that `john.exe` was not recognized.
-
-**Cause:** The command was executed from an incorrect directory.
-
-**Solution:** I located the `run` folder containing the executable and navigated to that directory before executing JTR commands.
-
-### 5.2 No Password Hashes Loaded
-
-**Problem:** John the Ripper displayed:
-
-```text
-No password hashes loaded
-```
-
-**Cause:** The initial SHA-256 practice file was incorrectly created due to two PowerShell commands being combined.
-
-**Solution:** I recreated the hash file and saved the correct SHA-256 hash separately.
-
-### 5.3 Incorrect Hash Format
-
-**Problem:** Johnny initially used the `GOST` hash format while the practice hash was SHA-256.
-
-**Solution:** I selected `Raw-SHA256` and started a new attack to apply the corrected configuration.
-
-### 5.4 Incorrect Wordlist Path
-
-**Problem:** Some PDF attack sessions ended immediately without processing password candidates.
-
-The Console log revealed an incorrect wordlist path:
-
-```text
---wordlist=C:\Users\bamib\Downloads\Hash\Hash2.txt
-```
-
-**Cause:** The extracted PDF hash file was mistakenly selected as the wordlist.
-
-**Solution:** I replaced it with the correct password wordlist:
-
-```text
-C:\Users\bamib\Downloads\practice-words.txt
-```
-
-After this correction, the program processed password candidates.
-
-![Johnny Troubleshooting](screenshots/11-johnny-troubleshooting.png)
-
-*Figure 11: Johnny Console log used to identify and troubleshoot incorrect attack configuration.*
-
-### 5.5 PDF Password Not Recovered
-
-**Problem:** The PDF hash was recognized, but the recorded wordlist attack did not recover the password.
-
-**Observation:** The attack completed with zero successful recoveries.
-
-**Possible causes:** The actual password might not have matched the tested candidates, the extracted hash might not have corresponded to the intended PDF, or the PDF password-verification data might have differed from expectations.
-
-The precise cause was not confirmed during the recorded testing.
-
----
-
-## 6. Results
-
-| Activity | Result |
+| Task | Result |
 |---|---|
-| JTR installation | Successful |
-| Johnny GUI configuration | Successful |
-| PDF hash extraction | Completed |
-| PDF hash recognition | Successful |
-| Wordlist attack against Hash2 | Completed without password recovery |
-| SHA-256 dictionary attack | Successful |
-| SHA-256 password recovered | `hello` |
-| Johnny SHA-256 recovery | 100% — 1/1 hash cracked |
-| Troubleshooting | Incorrect format and wordlist selection identified and corrected |
+| Download and extraction of John the Ripper | Successful |
+| Installation of Johnny GUI | Successful |
+| Configuration of the JTR executable | Successful |
+| Preparation of the protected PDF | Completed |
+| PDF hash extraction | Successful |
+| Saving the extracted hash | Completed |
+| Loading the hash into Johnny | Successful |
+| Password recovery attack | Completed |
+| PDF password recovery | Successful |
+| Opening the protected PDF | Successful |
+
+The lab demonstrated the complete password recovery process, from obtaining password-verification data to accessing a protected document with the recovered password.
+
+## 5. Security Observations
+
+The practical exercise demonstrated several important password security concepts.
+
+**Password strength:** The effectiveness of password protection depends partly on the complexity and unpredictability of the password selected.
+
+**Password recovery:** John the Ripper can evaluate candidate passwords against extracted password-verification data to identify a matching password.
+
+**Hash extraction:** Password-protected documents may contain verification information that can be extracted for authorized password auditing.
+
+**Password protection:** A protected document may be vulnerable to password-guessing attacks if its password can be discovered using feasible candidate testing.
+
+**Security awareness:** Strong and unique passwords are essential for protecting confidential documents against unauthorized access.
+
+## 6. Conclusion
+
+In this lab, I successfully completed the password recovery exercise using John the Ripper and Johnny GUI on Windows.
+
+John the Ripper was downloaded and configured with Johnny, and the password hash was extracted from the provided password-protected PDF using OnlineHashCrack.
+
+The extracted hash was saved in a text file and loaded into Johnny, where a password recovery attack was performed.
+
+After recovering the password, I used it to open the protected PDF document successfully.
+
+Overall, this practical exercise enhanced my understanding of password recovery techniques, password hash extraction, password security, and the use of John the Ripper and Johnny GUI in cybersecurity assessments.
 
 ---
 
-## 7. Security Findings
-
-The exercise demonstrated the following concepts:
-
-1. **Hash recognition is essential:** The correct hash format must be selected before password recovery can proceed.
-
-2. **Dictionary attacks depend on password candidates:** A password can be recovered if an appropriate candidate is tested successfully.
-
-3. **Password complexity affects recovery:** Strong, unpredictable passwords reduce the effectiveness of small dictionary attacks.
-
-4. **Incorrect tool configuration affects results:** Selecting the wrong hash format or wordlist can cause attacks to fail even when the tool is properly installed.
-
-5. **Successful hash loading does not guarantee recovery:** John the Ripper may recognize a hash without finding a matching password.
-
----
-
-## 8. Conclusion
-
-This lab provided practical experience using John the Ripper and Johnny GUI for password auditing and recovery.
-
-I successfully installed and configured both tools, extracted PDF password hashes, verified the PDF hash format, performed dictionary attacks, and resolved several configuration issues.
-
-The SHA-256 practice exercise was completed successfully, with the original password recovered using both PowerShell and Johnny.
-
-During the PDF exercise, the extracted hash was successfully recognized by John the Ripper, and a wordlist attack was performed. However, the recorded Hash2 attempt did not recover the PDF password.
-
-Overall, the lab strengthened my understanding of password hashes, wordlist-based attacks, PDF password protection, and troubleshooting password-auditing tools.
-
----
-
-**NetworkWalks Cybersecurity Internship – Week 3, Project Module 1**
+**NetworkWalks Cybersecurity & Ethical Hacking Internship**  
+**Week 3 – Project Module 1: Password Cracking with JTR**
