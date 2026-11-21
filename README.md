@@ -78,10 +78,6 @@ The provided password-protected PDF document, **My Locked PDF1.pdf**, was downlo
 
 The document was used as the target file for the password recovery exercise.
 
-![Protected PDF](screenshots/04-protected-pdf.png)
-
-*Figure 4: Password-protected PDF document prepared for the lab.*
-
 ### Step 5: Extracting the PDF Password Hash
 
 The OnlineHashCrack PDF Hash Extractor was accessed through the following website:
@@ -134,10 +130,6 @@ Johnny successfully loaded the extracted password hash for further analysis.
 
 The hash format was configured appropriately for PDF password recovery.
 
-![Loading Hash in Johnny](screenshots/07-loading-hash.png)
-
-*Figure 7: Loading the extracted PDF hash file into Johnny GUI.*
-
 ### Step 8: Starting the Password Recovery Attack
 
 After loading the PDF hash, the **Start new attack** option was selected in Johnny.
@@ -148,7 +140,7 @@ During the attack, the software tested password candidates against the extracted
 
 The attack progress was monitored through Johnny until the password recovery process was completed.
 
-![Password Cracking Process](screenshots/08-password-cracking.png)
+![Password Cracking Process](screenshots/08-password-cracking-recoveredpassword.png)
 
 *Figure 8: Password recovery attack initiated using Johnny GUI and John the Ripper.*
 
