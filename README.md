@@ -68,7 +68,7 @@ The executable was selected to establish a connection between Johnny GUI and Joh
 
 Johnny successfully detected the installed John the Ripper application, confirming that the configuration was completed.
 
-![Johnny Configuration](screenshots/03-johnny-configuration.png)
+![Johnny Configuration](screenshots/03-johnny-configuratio.png)
 
 *Figure 3: Configuring the John the Ripper executable in Johnny GUI.*
 
