@@ -44,10 +44,6 @@ After downloading, the compressed folder was extracted, and the application file
 
 The `john.exe` executable was located inside the `run` directory.
 
-![John the Ripper Download](screenshots/01-jtr-download.png)
-
-*Figure 1: Downloading and preparing John the Ripper on Windows.*
-
 ### Step 2: Installing Johnny GUI
 
 Johnny GUI was downloaded from the official Openwall website.
